@@ -1,0 +1,32 @@
+version: '3'
+
+services:
+  app:
+    build: ./
+    ports:
+      - ${APP_PORT}:${APP_PORT}
+    volumes:
+      - .:/go-blog
+    depends_on:
+      - database
+    container_name: go-blog
+    env_file: 
+      - .env
+
+  database:
+    image: mysql:latest
+    env_file:
+      - .env
+    environment: 
+      MYSQL_ROOT_PASSWORD: ${DB_PASSWORD}
+      MYSQL_DATABASE: ${DB_NAME}
+      MYSQL_PORT: ${DB_PORT}
+    container_name: go-blog-db
+    ports:
+      - 3306:${DB_PORT}
+    volumes:
+      - go-blog-docker-data:/var/lib/mysql 
+
+# persisted storage
+volumes:
+  go-blog-docker-data:

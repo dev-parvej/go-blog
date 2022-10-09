@@ -1,0 +1,16 @@
+<h1>Create post</h1>
+<div class="row d-flex align-items-center justify-content-center">
+    <div class="col-md-6">
+        <form action="/posts/save" method="post">
+            <div class="mb-3">
+              <label for="title" class="form-label" >Title</label>
+              <input type="title" class="form-control" name="title" id="title" />
+            </div>
+            <div class="mb-3">
+              <label for="body" class="form-label">Body</label>
+              <textarea class="form-control" id="body" name="body" rows="10" style="resize: none" ></textarea>
+            </div>
+            <button type="submit" class="btn btn-primary">Create</button>
+          </form>
+    </div>
+</div>
